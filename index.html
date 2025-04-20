@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Jayesh Portfolio Website</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">                        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="loading-screen">
@@ -14,7 +15,7 @@
     </div>
 
     <nav class="navbar">
-        <div class="logo">Portfolio</div>
+        <div class="logo">Jayesh Portfolio</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -205,16 +206,16 @@
                         <div class="project-image">
                             <img src="assets/blogging website.png" alt="Social Media Dashboard">
                         </div>
-                        <h3>Contrast theme Blogging website</h3>
-                        <p>Created a website for Blogging with a contrast theme</p>
+                        <h3>Yellow Black Blogging website</h3>
+                        <p>Blogging Website with Contrast theme</p>
                         <div class="tech-stack">
                             <span>HTML</span>
                             <span>CSS</span>
                             <span>JavaScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn">View Live</a>
-                            <a href="https://github.com/Jayeshtolani101/Blogging-website" class="btn">Source Code</a>
+                            <a href="https://jayeshtolani101.github.io/Contrast-blogging-website/" class="btn">View Live</a>
+                            <a href="https://github.com/Jayeshtolani101/Contrast-blogging-website" class="btn">Source Code</a>
                         </div>
                     </div>                    
                     <div class="project-card">
@@ -229,8 +230,8 @@
                             <span>React</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn">View Live</a>
-                            <a href="#" class="btn">Source Code</a>
+                            <a href="https://jayeshtolani101.github.io/Portfolio/" class="btn">View Live</a>
+                            <a href="https://github.com/Jayeshtolani101/Portfolio" class="btn">Source Code</a>
                         </div>
                     </div>
                 </div>
@@ -240,10 +241,10 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Get in Touch</h2>
-                <form class="contact-form">
-                    <input type="text" placeholder="Your Name" required>
-                    <input type="email" placeholder="Your Email" required>
-                    <textarea placeholder="Your Message" required></textarea>
+                <form class="contact-form" id="contact-form" onsubmit="sendEmail(event)">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <textarea id="message" placeholder="Your Message" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
             </div>
@@ -253,16 +254,16 @@
             <div class="container">
                 <h2>Connect with Me</h2>
                 <div class="social-media-links">
-                    <a href="https://www.linkedin.com/in/jayesh-tolani" target="_blank" class="social-link">
+                    <a href="https://www.linkedin.com/in/jayesh-tolani/" target="_blank" class="social-link">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="https://github.com/jayesh-tolani" target="_blank" class="social-link">
+                    <a href="https://github.com/Jayeshtolani101" target="_blank" class="social-link">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="https://twitter.com/jayesh-tolani" target="_blank" class="social-link">
+                    <a href="https://x.com/jayeshtolani101" target="_blank" class="social-link">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="https://www.instagram.com/jayesh-tolani" target="_blank" class="social-link">
+                    <a href="https://www.instagram.com/jayesh.tolani101/" target="_blank" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -281,6 +282,10 @@
         </div>
     </footer>
 
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init('YOUR_USER_ID'); // Replace 'YOUR_USER_ID' with your EmailJS User ID
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -332,3 +332,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+function sendEmail(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const templateParams = {
+        from_name: name,
+        from_email: email,
+        message: message,
+    };
+
+    emailjs.send('service_xbdw0bo', 'template_xv3u6bl', templateParams)
+        .then(() => {
+            alert('Message sent successfully!');
+            document.getElementById('contact-form').reset();
+        })
+        .catch((error) => {
+            console.error('Failed to send message:', error);
+            alert('Failed to send message. Please try again later.');
+        });
+}
+
+document.getElementById('contact-form').addEventListener('submit', sendEmail);
+
+

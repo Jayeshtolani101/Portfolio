@@ -80,7 +80,7 @@ section {
 .project-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem; /* Increase gap between project cards */
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -112,7 +112,12 @@ footer {
     margin-top: 2rem;
 }
 
-
+.project-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem; /* Add spacing between buttons */
+    margin-top: 1rem; /* Add some margin above the buttons */
+}
 
 .quote-container {
     max-width: 800px;
@@ -421,6 +426,50 @@ section h2::after {
     transform: scale(1.05);
 }
 
+.project-links .btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    background: linear-gradient(135deg, rgba(108, 99, 255, 0.2), rgba(100, 255, 218, 0.2));
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.project-links .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(108, 99, 255, 0.4), rgba(100, 255, 218, 0.4));
+    z-index: 1;
+    transition: all 0.4s ease;
+}
+
+.project-links .btn:hover::before {
+    left: 0;
+}
+
+.project-links .btn:hover {
+    color: var(--background-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    box-shadow: 0 0 15px rgba(108, 99, 255, 0.5), 0 0 25px rgba(100, 255, 218, 0.4);
+    transform: translateY(-3px);
+}
+
+.project-links .btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 10px rgba(108, 99, 255, 0.3), 0 0 15px rgba(100, 255, 218, 0.2);
+}
+
 @keyframes spin {
     to { transform: rotate(360deg); }
 }
@@ -483,6 +532,7 @@ section h2::after {
 /* Projects page additional styles */
 .tech-stack {
     padding: 0 1.5rem;
+    margin-top: 1rem;
     margin-bottom: 1rem;
     display: flex;
     flex-wrap: wrap;
