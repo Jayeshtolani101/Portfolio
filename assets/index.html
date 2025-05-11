@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jayesh Portfolio Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">                        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="loading-screen">
+        <div class="loader"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="logo">Jayesh's Portfolio</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark/light mode">
+            <span class="theme-icon sun"><i class="fas fa-sun"></i></span>
+            <span class="theme-icon moon"><i class="fas fa-moon"></i></span>
+        </button>
+    </nav>
+
+    <main>
+        <section id="home" class="hero">
+            <canvas id="hero-canvas"></canvas>
+            <div class="hero-content">
+                <span class="greeting-text">Hello <span class="wave">👋</span>, I'm</span>
+                <h1 class="glitch-text">Jayesh Tolani</h1>
+                <p class="typing-text">SAP ABAP Developer</p>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="assets/profilepic.jpg" alt="Profile Picture">
+                    </div>
+                    <div class="about-text">
+                        <h3>Who Am I?</h3>
+                        <p>I'm a passionate Full Stack Developer with a keen eye for creating elegant, efficient, and user-friendly applications. With a strong foundation in both front-end and back-end technologies, I strive to build seamless digital experiences that make a difference.</p>
+                        
+                        <div class="skills">
+                            <h3>Technical Skills</h3>
+                            <div class="skills-grid">
+                                <!-- Programming Languages -->
+                                <div class="skill-category">
+                                    <h4>Programming Languages</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Java</span>
+                                        <span class="skill-tag">Python</span>
+                                        <span class="skill-tag">SQL</span>
+                                        <span class="skill-tag">ABAP</span>
+                                    </div>
+                                </div>
+
+                                <!-- SAP Development -->
+                                <div class="skill-category">
+                                    <h4>SAP Development</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">BAPIs & BADIs</span>
+                                        <span class="skill-tag">ALE/IDOCs</span>
+                                        <span class="skill-tag">RFC & OData</span>
+                                        <span class="skill-tag">ABAP on HANA</span>
+                                        <span class="skill-tag">SAPscript</span>
+                                        <span class="skill-tag">Smart Forms</span>
+                                        <span class="skill-tag">Adobe Forms</span>
+                                    </div>
+                                </div>
+
+                                <!-- Web Development -->
+                                <div class="skill-category">
+                                    <h4>Web Development</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">HTML/CSS</span>
+                                        <span class="skill-tag">SAP UI5/Fiori</span>
+                                    </div>
+                                </div>
+
+                                <!-- Databases -->
+                                <div class="skill-category">
+                                    <h4>Databases</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">SAP HANA</span>
+                                        <span class="skill-tag">MongoDB</span>
+                                    </div>
+                                </div>
+
+                                <!-- Tools & Technologies -->
+                                <div class="skill-category">
+                                    <h4>Tools & Technologies</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">ABAP Workbench</span>
+                                        <span class="skill-tag">Git/GitHub</span>
+                                        <span class="skill-tag">ServiceNow</span>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Skills -->
+                                <div class="skill-category">
+                                    <h4>Additional Skills</h4>
+                                    <div class="skill-tags">
+                                        <span class="skill-tag">Agile Development</span>
+                                        <span class="skill-tag">ITIL</span>
+                                        <span class="skill-tag">OOP</span>
+                                        <span class="skill-tag">SAP ERP (SD)</span>
+                                        <span class="skill-tag">S/4HANA</span>
+                                        <span class="skill-tag">L2 Support</span>
+                                        <span class="skill-tag">Problem-Solving</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <div class="container">
+                <h2>Experience</h2>
+                
+
+                    
+                    <div class="experience-card">
+                        <div class="company-logo">
+                            <img src="assets/capgemini.jpeg" alt="Capgemini Logo">
+                        </div>
+                        <div class="experience-content">
+                            <h3>SAP ABAP Analyst</h3>
+                            <h4>Capgemini</h4>
+                            
+                            <div class="skills-used">
+                                <span class="skill-tag">ABAP</span>
+                                <span class="skill-tag">SAP ABAP</span>
+                                <span class="skill-tag">OData</span>
+                                <span class="skill-tag">Smart Forms</span>
+                                
+                                <span class="skill-tag">RFC</span>
+                                <span class="skill-tag">Adobe Forms</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-card">
+                        <div class="company-logo">
+                            <img src="assets/rooter.jpeg" alt="Rooter Logo">
+                        </div>
+                        <div class="experience-content">
+                            <h3>Freelance Content Creator</h3>
+                            <h4>Rooter.gg</h4>
+                            <p class="experience-date">Dec 2020 - Nov 2022</p>
+                            <div class="skills-used">
+                                <span class="skill-tag">OBS Studio</span>
+                                <span class="skill-tag">Video Editing</span>
+                                <span class="skill-tag">Content Creation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="company-logo">
+                            <img src="assets/dealcircle.jpg" alt="Capgemini Logo">
+                        </div>
+                        <div class="experience-content">
+                            <h3>Freelance Search Engine Optimization Consultant</h3>
+                            <h4>Dealcircle.in</h4>
+                            <p class="experience-date">Feb 2019 - Nov 2020</p>
+                            <div class="skills-used">
+                                <span class="skill-tag">SEO</span>
+                                <span class="skill-tag">Social Media</span>
+                                <span class="skill-tag">Web Development</span>
+                                <span class="skill-tag">Ecommerce</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/Proj1 article web.png" alt="E-commerce Platform">
+                        </div>
+                        <h3>Article Website</h3>
+                        <p>Article website Using HTML, CSS, JavaScript</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://jayeshtolani101.github.io/article-website/" class="btn">View Live</a>
+                            <a href="https://github.com/Jayeshtolani101/article-website" class="btn">Source Code</a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/blogging website.png" alt="Social Media Dashboard">
+                        </div>
+                        <h3>Yellow Black Blogging website</h3>
+                        <p>Blogging Website with Contrast theme</p>
+                        <div class="tech-stack">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://jayeshtolani101.github.io/Contrast-blogging-website/" class="btn">View Live</a>
+                            <a href="https://github.com/Jayeshtolani101/Contrast-blogging-website" class="btn">Source Code</a>
+                        </div>
+                    </div>                    
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="assets/Portfolio website.png" alt="Portfolio Website">
+                        </div>
+                        <h3>Portfolio Website</h3>
+                        <p>A showcase of my projects and skills.</p>
+                        <div class="tech-stack">
+                            <span>HTML5 & CSS3</span>
+                            <span>JavaScript</span>
+                            <span>React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://jayeshtolani101.github.io/Portfolio/" class="btn">View Live</a>
+                            <a href="https://github.com/Jayeshtolani101/Portfolio" class="btn">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact Me</h2>
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <input type="hidden" name="access_key" value="529c784a-b648-4fe4-b907-e1b8b5e0b22a">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="contact-info">
+                    <a href="tel:+918485815735" class="contact-btn phone-btn">📞 +91 8485815735</a>
+                    <a href="mailto:jayeshtolani2001@gmail.com" class="contact-btn email-btn">✉️ jayeshtolani2001@gmail.com</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="social-media" class="social-media">
+            <div class="container">
+                <h2>Connect with Me</h2>
+                <div class="social-media-links">
+                    <a href="https://www.linkedin.com/in/jayesh-tolani/" target="_blank" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Jayeshtolani101" target="_blank" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://x.com/jayeshtolani101" target="_blank" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/jayesh.tolani101/" target="_blank" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="quote-container">
+                <p class="daily-quote"></p>
+            </div>
+            <div class="footer-content">
+                <p>&copy; 2025 Jayesh Tolani. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        emailjs.init('YOUR_USER_ID'); // Replace 'YOUR_USER_ID' with your EmailJS User ID
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
