@@ -15,7 +15,7 @@
     </div>
 
     <nav class="navbar">
-        <div class="logo">Jayesh Portfolio</div>
+        <div class="logo">Jayesh's Portfolio</div>
         <ul class="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -23,12 +23,17 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <button class="theme-toggle" aria-label="Toggle dark/light mode">
+            <span class="theme-icon sun"><i class="fas fa-sun"></i></span>
+            <span class="theme-icon moon"><i class="fas fa-moon"></i></span>
+        </button>
     </nav>
 
     <main>
         <section id="home" class="hero">
             <canvas id="hero-canvas"></canvas>
             <div class="hero-content">
+                <span class="greeting-text">Hello <span class="wave">👋</span>, I'm</span>
                 <h1 class="glitch-text">Jayesh Tolani</h1>
                 <p class="typing-text">SAP ABAP Developer</p>
             </div>
@@ -240,13 +245,18 @@
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Get in Touch</h2>
-                <form class="contact-form" id="contact-form" onsubmit="sendEmail(event)">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                    <textarea id="message" placeholder="Your Message" required></textarea>
+                <h2>Contact Me</h2>
+                <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+                    <input type="hidden" name="access_key" value="529c784a-b648-4fe4-b907-e1b8b5e0b22a">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
+                <div class="contact-info">
+                    <a href="tel:+918485815735" class="contact-btn phone-btn">📞 +91 8485815735</a>
+                    <a href="mailto:jayeshtolani2001@gmail.com" class="contact-btn email-btn">✉️ jayeshtolani2001@gmail.com</a>
+                </div>
             </div>
         </section>
 

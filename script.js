@@ -9,6 +9,10 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+// Particle color variables
+let darkParticleColor = '#6C63FF';
+let lightParticleColor = '#FFD600';
+
 // Create animated particles
 const particlesGeometry = new THREE.BufferGeometry();
 const particlesCount = 5000;
@@ -20,10 +24,10 @@ for(let i = 0; i < particlesCount * 3; i++) {
 
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-// Create particle material
+// Create particle material (start with dark mode color)
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.005,
-    color: '#6C63FF',
+    color: darkParticleColor,
     transparent: true,
     opacity: 0.8
 });
@@ -35,21 +39,80 @@ scene.add(particlesMesh);
 // Position camera
 camera.position.z = 2;
 
+// Track mouse position
+let mouse = { x: 0, y: 0, radius: 0.5 }; // radius controls the area of effect
+
+window.addEventListener('mousemove', (event) => {
+    // Normalize mouse position to -1 to 1 for both axes
+    mouse.x = ((event.clientX / window.innerWidth) * 2 - 1) * 2.5; // scale to match particle space
+    mouse.y = -((event.clientY / window.innerHeight) * 2 - 1) * 2.5;
+});
+
 // Animation
 function animate() {
     requestAnimationFrame(animate);
-    
+
+    // Get positions array
+    const positions = particlesGeometry.attributes.position.array;
+
+    for (let i = 0; i < particlesCount; i++) {
+        const ix = i * 3;
+        const iy = i * 3 + 1;
+        const iz = i * 3 + 2;
+
+        // Calculate distance from mouse
+        const dx = positions[ix] - mouse.x;
+        const dy = positions[iy] - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        // If within radius, push particle away
+        if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) * 0.03;
+            positions[ix] += dx / dist * force;
+            positions[iy] += dy / dist * force;
+        } else {
+            // Slowly return to original position (optional, for a "spring" effect)
+            positions[ix] += (posArray[ix] - positions[ix]) * 0.01;
+            positions[iy] += (posArray[iy] - positions[iy]) * 0.01;
+        }
+    }
+
+    particlesGeometry.attributes.position.needsUpdate = true;
+
     particlesMesh.rotation.y += 0.001;
     particlesMesh.rotation.x += 0.001;
-    
+
     renderer.render(scene, camera);
 }
+animate();
 
 // Handle window resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// --- THEME PARTICLE COLOR SWITCHING ---
+function setParticlesColorForTheme() {
+    if (document.body.classList.contains('light-mode')) {
+        particlesMaterial.color.set(lightParticleColor);
+    } else {
+        particlesMaterial.color.set(darkParticleColor);
+    }
+}
+
+// Listen for theme changes
+const themeToggle = document.querySelector('.theme-toggle');
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        setTimeout(setParticlesColorForTheme, 10); // Wait for class toggle
+    });
+}
+
+// Also set on page load
+document.addEventListener('DOMContentLoaded', () => {
+    setParticlesColorForTheme();
 });
 
 // Loading screen handler
@@ -265,32 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const cursor = document.createElement('div');
-    const cursorFollower = document.createElement('div');
-    cursor.classList.add('cursor');
-    cursorFollower.classList.add('cursor-follower');
-    document.body.appendChild(cursor);
-    document.body.appendChild(cursorFollower);
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursorFollower.style.left = e.clientX + 'px';
-        cursorFollower.style.top = e.clientY + 'px';
-    });
-
-    // Add hover effect
-    document.querySelectorAll('a, button').forEach(element => {
-        element.addEventListener('mouseenter', () => {
-            cursor.style.transform = 'scale(1.5)';
-            cursorFollower.style.transform = 'scale(0.5)';
-        });
-        element.addEventListener('mouseleave', () => {
-            cursor.style.transform = 'scale(1)';
-            cursorFollower.style.transform = 'scale(1)';
-        });
-    });
-
     document.querySelectorAll('.experience-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
@@ -330,32 +367,25 @@ document.addEventListener('DOMContentLoaded', () => {
             button.style.transform = 'translate(0, 0)';
         });
     });
-});
 
-function sendEmail(event) {
-    event.preventDefault(); // Prevent the default form submission
+    // Theme toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const body = document.body;
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+    // Load theme from localStorage
+    if (localStorage.getItem('theme') === 'light') {
+        body.classList.add('light-mode');
+    }
 
-    const templateParams = {
-        from_name: name,
-        from_email: email,
-        message: message,
-    };
-
-    emailjs.send('service_xbdw0bo', 'template_xv3u6bl', templateParams)
-        .then(() => {
-            alert('Message sent successfully!');
-            document.getElementById('contact-form').reset();
-        })
-        .catch((error) => {
-            console.error('Failed to send message:', error);
-            alert('Failed to send message. Please try again later.');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+            } else {
+                localStorage.setItem('theme', 'dark');
+            }
         });
-}
-
-document.getElementById('contact-form').addEventListener('submit', sendEmail);
-
+    }
+});
 
